@@ -20,7 +20,7 @@ public class ReentrantLockTest {
         CountDownLatch c = new CountDownLatch(5);
 
 
-        AtomicInteger atomicInteger = new AtomicInteger();
+        new AtomicInteger()
 
     }
 }
