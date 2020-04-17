@@ -48,6 +48,7 @@ public class Interrupted {
         @Override
         public void run() {
             while (true){
+                System.out.print("*");
             }
         }
     }
