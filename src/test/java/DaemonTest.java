@@ -11,11 +11,11 @@ public class DaemonTest {
         System.out.printf("main thread daemon: %b\n", Thread.currentThread().isDaemon());
 
         thread.start();
-        try {
-            Thread.sleep(3 * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(3 * 1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         System.out.println("main thread exit") ;
         //System.exit(0);
@@ -27,7 +27,7 @@ class WorkerThread extends Thread {
     public WorkerThread(String trheadName) {
         // if true, JVM will quit after main thread quit
         // if false, JVM will not quit, because this workerThread will never end.
-        setDaemon(true);
+        setDaemon(false);
         setName(trheadName);
     }
 
