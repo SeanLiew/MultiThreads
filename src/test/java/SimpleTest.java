@@ -110,4 +110,17 @@ public class SimpleTest {
 
     }
 
+    @Test
+    public void number(){
+
+        int a = -10;
+
+        int b = 3;
+
+
+        System.out.println(a % b);
+
+        System.out.println(Math.floorMod(a, b));
+
+    }
 }
