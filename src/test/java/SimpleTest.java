@@ -4,6 +4,9 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.StampedLock;
 
 
 /**
@@ -121,6 +124,57 @@ public class SimpleTest {
         System.out.println(a % b);
 
         System.out.println(Math.floorMod(a, b));
+
+    }
+    @Test
+    public void stampedLock(){
+
+        StampedLock lock = new StampedLock();
+
+        Lock lock1 = lock.asReadLock();
+        lock1.lock();
+
+        Lock lock2 = lock.asWriteLock();
+
+        ReadWriteLock readWriteLock = lock.asReadWriteLock();
+
+
+    }
+    @Test
+    public void cycleBarrier() throws BrokenBarrierException, InterruptedException {
+
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
+
+
+        cyclicBarrier.await();
+
+
+    }
+
+    @Test
+    public void phaser(){
+        Phaser phaser = new Phaser(10);
+
+        phaser.awaitAdvance(phaser.getPhase());
+
+        phaser.arrive();
+
+        //cyclicBarrier.await()
+        phaser.arriveAndAwaitAdvance();
+
+    }
+
+    @Test
+    public int testif(){
+        int i = 10;
+        int j = 2;
+        System.out.println(j);
+        if ((i = (j <= 0) ? --i : ++i) == 0) {
+            System.out.println(i);
+            return i;
+        }
+        System.out.println(i);
+        return j;
 
     }
 }
