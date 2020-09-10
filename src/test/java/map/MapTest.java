@@ -1,8 +1,11 @@
+package map;
+
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -17,7 +20,7 @@ public class MapTest {
     /**
      * 存放交易账户的map
      */
-//    private static Map<String, User> tradeAccountNoMap = new ConcurrentHashMap<>(1024 * 1024 * 2);
+    private static ConcurrentHashMap<String, User> conTradeAccountNoMap = new ConcurrentHashMap<>(1024 * 1024 * 2);
 //    private static Map<String, User> tradeAccountNoMap = new Hashtable<>(1024 * 1024 * 2);
     private static Map<String, User> tradeAccountNoMap = new HashMap<>(1024 * 1024 * 10);
     private static Set<Integer> SET_KEY = new ConcurrentSkipListSet<>();
@@ -78,6 +81,10 @@ public class MapTest {
         int h;
         int hashCode = (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
         System.out.println(hashCode);
+    }
+    @Test
+    public void put(){
+        conTradeAccountNoMap.put("", null);
     }
 
     private static class User{

@@ -24,11 +24,14 @@ public class ExeTest {
     );
 
     static {
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
                 logger.warn(String.format(
                         "executorPool, activeCount:%s,completedTaskCount:%s,corePoolSize:%s,aliveTime:%s,largestPoolSize:%s,maximumPoolSize:%s,poolSize:%s,taskCount:%s,queue.size:%s",
-                         executorPool.getActiveCount(), executorPool.getCompletedTaskCount(), executorPool.getCorePoolSize(), executorPool.getKeepAliveTime(TimeUnit.SECONDS),
+                        executorPool.getActiveCount(), executorPool.getCompletedTaskCount(), executorPool.getCorePoolSize(), executorPool.getKeepAliveTime(TimeUnit.SECONDS),
                         executorPool.getLargestPoolSize(), executorPool.getMaximumPoolSize(), executorPool.getPoolSize(), executorPool.getTaskCount(), executorPool.getQueue().size()));
+            }
         }, 1, 2, TimeUnit.SECONDS);
     }
 
