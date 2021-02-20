@@ -1,3 +1,4 @@
+import create.CloneTest;
 import org.junit.Test;
 
 import java.util.concurrent.*;
@@ -18,25 +19,9 @@ public class SimpleTest {
 
     @Test
     public void orTest(){
+        CloneTest c = new CloneTest();
+//        c.clone();
 
-        int a = -4;
-        int b = 5;
-        int c = 4;
-        int d = -5;
-
-        System.out.println(a|b);
-        System.out.println(c|d);
-        System.out.println(b^c);
-        System.out.println("------------------");
-        System.out.println(b<<2);
-        System.out.println(a<<2);
-        System.out.println("------------------");
-        System.out.println(b>>2);
-        System.out.println(b>>>2);
-        System.out.println(a>>2);
-        System.out.println(a>>>2);
-        System.out.println(d>>2);
-        System.out.println(d>>>2);
     }
     @Test
     public void atomic(){
