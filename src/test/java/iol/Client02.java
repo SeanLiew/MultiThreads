@@ -18,14 +18,14 @@ public class Client02 {
         //基于字节流
         OutputStream outputStream = socket.getOutputStream();
         //控制台输入以IO的形式发送到服务器
-        System.out.println("TCP连接成功 \n请输入：");
-        String str = new Scanner(System.in).nextLine();
-        byte[] car = str.getBytes();
-        outputStream.write(car);
-        System.out.println("TCP协议的Socket发送成功");
-        //刷新缓冲区
-        outputStream.flush();
-        //关闭连接
-        socket.close();
+        while (true){
+            System.out.println("TCP连接成功 \n请输入：");
+            String str = new Scanner(System.in).nextLine();
+            byte[] car = str.getBytes();
+            outputStream.write(car);
+            System.out.println("TCP协议的Socket发送成功");
+            //刷新缓冲区
+            outputStream.flush();
+        }
     }
 }
