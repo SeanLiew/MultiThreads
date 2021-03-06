@@ -3,8 +3,9 @@ import org.junit.Test;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -39,7 +40,6 @@ public class ReentrantLockTest {
         CountDownLatch c = new CountDownLatch(5);
 
 
-        new AtomicInteger();
 
     }
 
@@ -90,6 +90,47 @@ public class ReentrantLockTest {
 
         writeLock.lock();
         writeLock.tryLock();
+
+    }
+    @Test
+    public void testMap(){
+
+        Map<String, Object> params = new ConcurrentHashMap<>();
+
+        params.put("123", "232");
+
+    }
+    @Test
+    public void testQueue() throws InterruptedException {
+
+        Queue<String> queue = new ConcurrentLinkedQueue<>();
+
+        LinkedBlockingQueue<String> linkedBlockingQueue = new LinkedBlockingQueue<>();
+        linkedBlockingQueue.put("");
+        linkedBlockingQueue.add("");
+
+        DelayQueue<ScheduledFuture> delayQueue = new DelayQueue<>();
+
+        ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(11);
+
+        ArrayBlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<>(10);
+
+        arrayBlockingQueue.add("");
+
+        SynchronousQueue<String> synchronousQueue = new SynchronousQueue<>(true);
+
+
+        LinkedTransferQueue<String> linkedTransferQueue = new LinkedTransferQueue<>();
+        linkedTransferQueue.transfer("");
+
+    }
+    @Test
+    public void fork() throws InterruptedException {
+
+        ForkJoinPool pool = new ForkJoinPool();
+        
+//        pool.execute(new ForkJoinTask<Object>() {
+//        });
 
     }
 }
